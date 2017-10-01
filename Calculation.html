@@ -1,0 +1,75 @@
+<html>
+ <head>
+<title>BMI Calculator</title>
+<script type="text/javascript">
+    function computeBMI()
+    {
+        //user input
+        var height=Number(document.getElementById("height").value);
+        var heightunits=document.getElementById("heightunits").value;
+        var weight=Number(document.getElementById("weight").value);
+        var weightunits=document.getElementById("weightunits").value;
+
+
+        //Converting the units to the metric system
+        if (heightunits=="inches") height/=39.3700787;
+        if (weightunits=="lb") weight/=2.20462;
+
+        //calculations
+        var BMI=weight/Math.pow(height,2);
+
+        //results
+        document.getElementById("output").innerText=Math.round(BMI*100)/100;
+
+        var output =  Math.round(BMI*100)/100
+        if (output<18.5 && output>0)
+        document.getElementById("comment").innerText = "Underweight";
+      else   if (output>=18.5 && output<=25)
+        document.getElementById("comment").innerText = "Normal";
+      else   if (output>=25 && output<=30)
+        document.getElementById("comment").innerText = "Overweight";
+      else   if (output>30)
+        document.getElementById("comment").innerText = "Obese";
+	  else   if (output<0)
+		document.getElementById("comment").innerText = "You cannot enter a negative number, try again!";       // document.getElementById("answer").value = output; 
+    }
+</script>
+ </head>
+  <link type="text/css"
+        rel="stylesheet"
+        href="Moyer_David.css">
+</link>		
+  <body>
+  
+  <img class="img-circle" src="Profile.jpg">
+  
+  
+  
+  <ul>
+	<li><a href="Moyer_David.html">About Me</a></li>
+	<li><a class="active" href="Calculation.html">BMI Calculator</a></li>
+	<li><a href="Contact.html">Contact Me!</a></li>
+  </ul>
+  
+  
+	<section id="borders">
+	<div style="color: black">
+	<a><p align="left">Chase's Website</p></a>
+		<h1><center>Body Mass Index Calculator</center></h1>
+		
+		<p><center>Please enter your height: <input type="text" id="height"/>
+			<select type="multiple" id="heightunits">
+				<option value="feet" selected="selected">Feet</option>
+				<option value="inches">Inches</option>
+				</select></center></p>
+		<p><center>Please enter your weight: <input type="text" id="weight"/>
+			<select type="multiple" id="weightunits">
+				<option value="kg" selected="selected">Kilograms</option>
+				<option value="lb">Pounds</option>
+			</select>
+		</p>
+		<input type="submit" value="Compute BMI" onclick="computeBMI();">
+		<h4>Your BMI is: <span id="output"></span></h4>
+		<h4>This means you are: <span id="comment"></span></h4>
+	</body> 
+</html>
